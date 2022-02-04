@@ -10,9 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "pasajero")
@@ -29,33 +29,30 @@ public class Passenger implements Serializable {
 	@Column(name = "idPasajero")
 	private Long idPassenger;
 	
-	@Column(name = "documento")
+	@Column(name = "documento", nullable = false)
 	private String document;
 	
-	@Column(name = "nombre")
+	@Column(name = "nombre", nullable = false)
 	private String name;
 	
-	@Column(name = "apellido")
+	@Column(name = "apellido", nullable = false)
 	private String lastName;
 	
-	@Column(name = "telefono")
+	@Column(name = "telefono", nullable = false)
 	private String phone;
 	
-	@Column(name = "correo")
+	@Column(name = "correo", nullable = false)
 	private String email;
 	
-	@Column(name = "edad")
+	@Column(name = "edad", nullable = false)
 	private int age;
 	
-	@Column(name = "tipoPasajero")
+	@Column(name = "tipoPasajero", nullable = false)
 	private String passengerType;
 	
-	@Column(name = "fechaVencimientoVisa")
+	@Column(name = "fechaVencimientoVisa", nullable = true)
+	@DateTimeFormat(pattern = "%Y-%m-%d")
 	private Date visaExpirationDate;
-	
-	@ManyToOne
-	@JoinColumn(name = "idHistorial", referencedColumnName = "idHistorial")
-	private Registry idRegistry;
 
 	public Long getIdPassenger() {
 		return idPassenger;
@@ -127,13 +124,5 @@ public class Passenger implements Serializable {
 
 	public void setVisaExpirationDate(Date visaExpirationDate) {
 		this.visaExpirationDate = visaExpirationDate;
-	}
-
-	public Registry getIdRegistry() {
-		return idRegistry;
-	}
-
-	public void setIdRegistry(Registry idRegistry) {
-		this.idRegistry = idRegistry;
 	}
 }

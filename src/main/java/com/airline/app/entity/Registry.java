@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -26,11 +28,15 @@ public class Registry implements Serializable {
 	@Column(name = "idHistorial")
 	private Long idRegistry;
 	
-	@Column(name = "cantidadViajes")
+	@Column(name = "cantidadViajes", nullable = true)
 	private int numberTrips;
 	
-	@Column(name = "cantidadMillas")
+	@Column(name = "cantidadMillas", nullable = true)
 	private int numberMiles;
+	
+	@ManyToOne
+	@JoinColumn(name = "idPasajero", referencedColumnName = "idPasajero")
+	private Passenger idPassenger;
 
 	public Long getIdRegistry() {
 		return idRegistry;

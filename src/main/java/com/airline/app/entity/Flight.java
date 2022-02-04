@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name = "vuelo")
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -29,13 +31,14 @@ public class Flight implements Serializable {
 	@Column(name = "idVuelo")
 	private Long idFlight;
 	
-	@Column(name = "numeroVuelo")
+	@Column(name = "numeroVuelo", nullable = false)
 	private String flightNumber;
 	
-	@Column(name = "tipoVuelo")
+	@Column(name = "tipoVuelo", nullable = false)
 	private String flightType;
 	
-	@Column(name = "fecha")
+	@Column(name = "fecha", nullable = false)
+	@DateTimeFormat(pattern = "%Y-%m-%d")
 	private Date date;
 	
 	@Column(name = "hora")

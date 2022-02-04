@@ -28,7 +28,7 @@ public class Ticket implements Serializable {
 	@Column(name = "idTiquete")
 	private Long idTicket;
 	
-	@Column(name = "totalPago")
+	@Column(name = "totalPago", nullable = false)
 	private String totalPayment;
 	
 	@ManyToOne

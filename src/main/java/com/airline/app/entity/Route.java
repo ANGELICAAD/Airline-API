@@ -28,7 +28,7 @@ public class Route implements Serializable {
 	@Column(name = "idRuta")
 	private Long idRoute;
 	
-	@Column(name = "acumulaMillas")
+	@Column(name = "acumulaMillas", nullable = false)
 	private int acumulateMiles;
 	
 	@ManyToOne

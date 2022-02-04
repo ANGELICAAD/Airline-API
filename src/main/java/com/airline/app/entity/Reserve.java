@@ -28,7 +28,7 @@ public class Reserve implements Serializable {
 	@Column(name = "idReserva")
 	private Long idReserve;
 	
-	@Column(name = "estado")
+	@Column(name = "estado", nullable = false)
 	private String state;
 	
 	@ManyToOne

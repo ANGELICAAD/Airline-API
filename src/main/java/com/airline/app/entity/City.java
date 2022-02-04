@@ -26,10 +26,10 @@ public class City implements Serializable {
 	@Column(name = "idCiudad")
 	private Long idCity;
 	
-	@Column(name = "nombreCiudad")
+	@Column(name = "nombreCiudad", nullable = false)
 	private String cityName;
 	
-	@Column(name = "visa")
+	@Column(name = "visa", nullable = false)
 	private boolean visa;
 
 	public Long getIdCity() {
