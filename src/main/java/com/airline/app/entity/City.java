@@ -26,8 +26,8 @@ public class City implements Serializable {
 	@Column(name = "idCiudad")
 	private Long idCity;
 	
-	@Column(name = "nombreCiudad", nullable = false)
-	private String cityName;
+	@Column(name = "nombre", nullable = false)
+	private String name;
 	
 	@Column(name = "visa", nullable = false)
 	private boolean visa;
@@ -40,12 +40,12 @@ public class City implements Serializable {
 		this.idCity = idCity;
 	}
 
-	public String getCityName() {
-		return cityName;
+	public String getName() {
+		return name;
 	}
 
-	public void setCityName(String cityName) {
-		this.cityName = cityName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public boolean isVisa() {

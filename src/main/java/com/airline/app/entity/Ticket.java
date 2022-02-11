@@ -29,7 +29,7 @@ public class Ticket implements Serializable {
 	private Long idTicket;
 	
 	@Column(name = "totalPago", nullable = false)
-	private String totalPayment;
+	private double totalPayment;
 	
 	@ManyToOne
 	@JoinColumn(name = "idReserva", referencedColumnName = "idReserva")
@@ -47,11 +47,11 @@ public class Ticket implements Serializable {
 		this.idTicket = idTicket;
 	}
 
-	public String getTotalPayment() {
+	public double getTotalPayment() {
 		return totalPayment;
 	}
 
-	public void setTotalPayment(String totalPayment) {
+	public void setTotalPayment(double totalPayment) {
 		this.totalPayment = totalPayment;
 	}
 

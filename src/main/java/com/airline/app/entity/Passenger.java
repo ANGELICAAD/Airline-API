@@ -47,12 +47,21 @@ public class Passenger implements Serializable {
 	@Column(name = "edad", nullable = false)
 	private int age;
 	
-	@Column(name = "tipoPasajero", nullable = false)
-	private String passengerType;
+	@Column(name = "tipo", nullable = false)
+	private String type;
 	
 	@Column(name = "fechaVencimientoVisa", nullable = true)
 	@DateTimeFormat(pattern = "%Y-%m-%d")
 	private Date visaExpirationDate;
+	
+	@Column(name = "cantidadViajes", nullable = true)
+	private int numberTrips;
+	
+	@Column(name = "cantidadMillas", nullable = true)
+	private int numberMiles;
+	
+	@Column(name = "viajeroFrecuente", nullable = false)
+	private boolean frequentFlyer;
 
 	public Long getIdPassenger() {
 		return idPassenger;
@@ -66,9 +75,9 @@ public class Passenger implements Serializable {
 		return document;
 	}
 
-	public void setDocument(String document) {
-		this.document = document;
-	}
+//	public void setDocument(String document) {
+//		this.document = document;
+//	}
 
 	public String getName() {
 		return name;
@@ -110,19 +119,43 @@ public class Passenger implements Serializable {
 		this.age = age;
 	}
 
-	public String getPassengerType() {
-		return passengerType;
-	}
-
-	public void setPassengerType(String passengerType) {
-		this.passengerType = passengerType;
-	}
-
 	public Date getVisaExpirationDate() {
 		return visaExpirationDate;
 	}
 
 	public void setVisaExpirationDate(Date visaExpirationDate) {
 		this.visaExpirationDate = visaExpirationDate;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public int getNumberTrips() {
+		return numberTrips;
+	}
+
+	public void setNumberTrips(int numberTrips) {
+		this.numberTrips = numberTrips;
+	}
+
+	public int getNumberMiles() {
+		return numberMiles;
+	}
+
+	public void setNumberMiles(int numberMiles) {
+		this.numberMiles = numberMiles;
+	}
+
+	public boolean isFrequentFlyer() {
+		return frequentFlyer;
+	}
+
+	public void setFrequentFlyer(boolean frequentFlyer) {
+		this.frequentFlyer = frequentFlyer;
 	}
 }

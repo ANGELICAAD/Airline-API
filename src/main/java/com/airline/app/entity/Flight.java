@@ -31,27 +31,30 @@ public class Flight implements Serializable {
 	@Column(name = "idVuelo")
 	private Long idFlight;
 	
-	@Column(name = "numeroVuelo", nullable = false)
-	private String flightNumber;
+	@Column(name = "numero", nullable = false)
+	private String number;
 	
-	@Column(name = "tipoVuelo", nullable = false)
-	private String flightType;
+	@Column(name = "tipo", nullable = false)
+	private String type;
 	
 	@Column(name = "fecha", nullable = false)
 	@DateTimeFormat(pattern = "%Y-%m-%d")
 	private Date date;
 	
-	@Column(name = "hora")
+	@Column(name = "hora", nullable = false)
 	private String hour;
 	
-	@Column(name = "duracion")
+	@Column(name = "duracion", nullable = false)
 	private String duration;
 	
-	@Column(name = "tipoRuta")
+	@Column(name = "tipoRuta", nullable = false)
 	private String routeType;
 	
-	@Column(name = "sillasDisponibles")
+	@Column(name = "sillasDisponibles", nullable = false)
 	private int chairsAvailable;
+	
+	@Column(name = "precio", nullable = false)
+	private double cost;
 	
 	@ManyToOne
 	@JoinColumn(name = "idRuta", referencedColumnName = "idRuta")
@@ -65,20 +68,20 @@ public class Flight implements Serializable {
 		this.idFlight = idFlight;
 	}
 
-	public String getFlightNumber() {
-		return flightNumber;
+	public String getNumber() {
+		return number;
 	}
 
-	public void setFlightNumber(String flightNumber) {
-		this.flightNumber = flightNumber;
+	public void setNumber(String number) {
+		this.number = number;
 	}
 
-	public String getFlightType() {
-		return flightType;
+	public String getType() {
+		return type;
 	}
 
-	public void setFlightType(String flightType) {
-		this.flightType = flightType;
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	public Date getDate() {
@@ -127,5 +130,13 @@ public class Flight implements Serializable {
 
 	public void setIdRoute(Route idRoute) {
 		this.idRoute = idRoute;
+	}
+
+	public double getCost() {
+		return cost;
+	}
+
+	public void setCost(double cost) {
+		this.cost = cost;
 	}
 }
