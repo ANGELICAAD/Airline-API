@@ -15,7 +15,7 @@ import javax.persistence.Table;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name = "pasajero")
+@Table(name = "passenger")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Passenger implements Serializable {
 
@@ -26,41 +26,41 @@ public class Passenger implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idPasajero")
+	@Column(name = "idPassenger")
 	private Long idPassenger;
 	
-	@Column(name = "documento", nullable = false)
+	@Column(name = "document", nullable = false)
 	private String document;
 	
-	@Column(name = "nombre", nullable = false)
+	@Column(name = "name", nullable = false)
 	private String name;
 	
-	@Column(name = "apellido", nullable = false)
+	@Column(name = "lastName", nullable = false)
 	private String lastName;
 	
-	@Column(name = "telefono", nullable = false)
+	@Column(name = "phone", nullable = false)
 	private String phone;
 	
-	@Column(name = "correo", nullable = false)
+	@Column(name = "email", nullable = false)
 	private String email;
 	
-	@Column(name = "edad", nullable = false)
+	@Column(name = "age", nullable = false)
 	private int age;
 	
-	@Column(name = "tipo", nullable = false)
+	@Column(name = "type", nullable = false)
 	private String type;
 	
-	@Column(name = "fechaVencimientoVisa", nullable = true)
+	@Column(name = "visaExpirationDate", nullable = true)
 	@DateTimeFormat(pattern = "%Y-%m-%d")
 	private Date visaExpirationDate;
 	
-	@Column(name = "cantidadViajes", nullable = true)
+	@Column(name = "numberTrips", nullable = true)
 	private int numberTrips;
 	
-	@Column(name = "cantidadMillas", nullable = true)
+	@Column(name = "numberMiles", nullable = true)
 	private int numberMiles;
 	
-	@Column(name = "viajeroFrecuente", nullable = false)
+	@Column(name = "frequentFlyer", nullable = false)
 	private boolean frequentFlyer;
 
 	public Long getIdPassenger() {

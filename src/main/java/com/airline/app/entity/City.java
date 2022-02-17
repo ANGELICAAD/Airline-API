@@ -12,7 +12,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "ciudad")
+@Table(name = "city")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class City implements Serializable {
 
@@ -23,10 +23,10 @@ public class City implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idCiudad")
+	@Column(name = "idCity")
 	private Long idCity;
 	
-	@Column(name = "nombre", nullable = false)
+	@Column(name = "name", nullable = false)
 	private String name;
 	
 	@Column(name = "visa", nullable = false)

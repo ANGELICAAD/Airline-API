@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "reserva")
+@Table(name = "reserve")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Reserve implements Serializable {
 
@@ -25,18 +25,18 @@ public class Reserve implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idReserva")
+	@Column(name = "idReserve")
 	private Long idReserve;
 	
-	@Column(name = "estado", nullable = false)
+	@Column(name = "state", nullable = false)
 	private String state;
 	
 	@ManyToOne
-	@JoinColumn(name = "vueloIda", referencedColumnName = "idVuelo")
+	@JoinColumn(name = "departureFlight", referencedColumnName = "idFlight")
 	private Flight departureFlight;
 	
 	@ManyToOne
-	@JoinColumn(name = "vueloRegreso", referencedColumnName = "idVuelo")
+	@JoinColumn(name = "returnFlight", referencedColumnName = "idFlight")
 	private Flight returnFlight;
 
 	public Long getIdReserve() {

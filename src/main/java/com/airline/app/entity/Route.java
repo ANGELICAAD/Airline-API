@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "ruta")
+@Table(name = "route")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Route implements Serializable {
 
@@ -25,18 +25,18 @@ public class Route implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idRuta")
+	@Column(name = "idRoute")
 	private Long idRoute;
 	
-	@Column(name = "acumulaMillas", nullable = false)
+	@Column(name = "acumulateMiles", nullable = false)
 	private int acumulateMiles;
 	
 	@ManyToOne
-	@JoinColumn(name = "ciudadOrigen", referencedColumnName = "idCiudad")
+	@JoinColumn(name = "originCity", referencedColumnName = "idCity")
 	private City originCity;
 	
 	@ManyToOne
-	@JoinColumn(name = "ciudadDestino", referencedColumnName = "idCiudad")
+	@JoinColumn(name = "destinationCity", referencedColumnName = "idCity")
 	private City destinationCity;
 
 	public Long getIdRoute() {

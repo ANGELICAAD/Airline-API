@@ -17,7 +17,7 @@ import javax.persistence.Table;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name = "vuelo")
+@Table(name = "flight")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Flight implements Serializable {
 
@@ -28,36 +28,36 @@ public class Flight implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idVuelo")
+	@Column(name = "idFlight")
 	private Long idFlight;
 	
-	@Column(name = "numero", nullable = false)
+	@Column(name = "number", nullable = false)
 	private String number;
 	
-	@Column(name = "tipo", nullable = false)
+	@Column(name = "type", nullable = false)
 	private String type;
 	
-	@Column(name = "fecha", nullable = false)
+	@Column(name = "date", nullable = false)
 	@DateTimeFormat(pattern = "%Y-%m-%d")
 	private Date date;
 	
-	@Column(name = "hora", nullable = false)
+	@Column(name = "hour", nullable = false)
 	private String hour;
 	
-	@Column(name = "duracion", nullable = false)
+	@Column(name = "duration", nullable = false)
 	private String duration;
 	
-	@Column(name = "tipoRuta", nullable = false)
+	@Column(name = "routeType", nullable = false)
 	private String routeType;
 	
-	@Column(name = "sillasDisponibles", nullable = false)
+	@Column(name = "chairsAvailable", nullable = false)
 	private int chairsAvailable;
 	
-	@Column(name = "precio", nullable = false)
+	@Column(name = "cost", nullable = false)
 	private double cost;
 	
 	@ManyToOne
-	@JoinColumn(name = "idRuta", referencedColumnName = "idRuta")
+	@JoinColumn(name = "idRoute", referencedColumnName = "idRoute")
 	private Route idRoute;
 
 	public Long getIdFlight() {
