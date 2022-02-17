@@ -12,14 +12,14 @@ import com.airline.app.entity.Route;
 public interface RouteRepository extends JpaRepository<Route, Long> {
 
 	// Listar las ciudades de origen
-	@Query(value = "select distinct nombre from ciudad inner join ruta "
-			+ "on ciudad.idCiudad = ruta.ciudadOrigen;", nativeQuery = true)
-	List<String> listOriginCities();
+	@Query(value = "select distinct name from city inner join route "
+			+ "on city.idCity = route.originCity;", nativeQuery = true)
+	List<String> originCitiesList();
 	
 	// Listar las ciudades destino de acuerdo a una ciudad origen
-	@Query(value = "select cDestino.nombre from ciudad cOrigen inner join ruta r "
-			+ "on cOrigen.idCiudad = r.ciudadOrigen inner join ciudad as cDestino "
-			+ "on r.ciudadDestino = cDestino.idCiudad where cOrigen.nombre=:originCity", 
+	@Query(value = "select cDestination.name from city as cOrigin inner join route r "
+			+ "on cOrigin.idCity = r.originCity inner join city as cDestination "
+			+ "on r.destinationCity = cDestination.idCity where cOrigin.name=:originCity", 
 			nativeQuery = true)
-	List<String> listDestinationCities(String originCity);
+	List<String> destinationCitiesList(String originCity);
 }
