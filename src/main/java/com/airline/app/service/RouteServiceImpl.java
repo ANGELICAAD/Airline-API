@@ -14,13 +14,13 @@ public class RouteServiceImpl implements RouteService {
 	private RouteRepository routeRepository;
 	
 	@Override
-	public List<String> listOriginCities() {
-		return routeRepository.listOriginCities();
+	public List<String> originCitiesList() {
+		return routeRepository.originCitiesList();
 	}
 
 	@Override
-	public List<String> listDestinationCities(String originCity) {
-		return routeRepository.listDestinationCities(originCity);
+	public List<String> destinationCitiesList(String originCity) {
+		return routeRepository.destinationCitiesList(originCity);
 	}
 
 }
