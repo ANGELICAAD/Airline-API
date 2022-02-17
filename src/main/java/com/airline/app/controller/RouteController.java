@@ -24,8 +24,8 @@ public class RouteController {
 	}
 	
 	@GetMapping("/originCities")
-	public ResponseEntity<?> listOriginCities() {
-		List<String> originCities = (List<String>) routeService.listOriginCities();
+	public ResponseEntity<?> originCitiesList() {
+		List<String> originCities = (List<String>) routeService.originCitiesList();
 		
 		if(originCities.isEmpty()) {
 			return ResponseEntity.notFound().build();
@@ -35,8 +35,8 @@ public class RouteController {
 	}
 	
 	@GetMapping("/destinationCities/{originCity}")
-	public ResponseEntity<?> listDestinationCities(@PathVariable String originCity) {
-		List<String> destinationCities = (List<String>) routeService.listDestinationCities(originCity);
+	public ResponseEntity<?> destinationCitiesList(@PathVariable String originCity) {
+		List<String> destinationCities = (List<String>) routeService.destinationCitiesList(originCity);
 		
 		if(destinationCities.isEmpty()) {
 			return ResponseEntity.notFound().build();
