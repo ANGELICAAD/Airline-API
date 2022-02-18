@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.airline.app.entity.Ticket;
@@ -11,6 +12,21 @@ import com.airline.app.entity.Ticket;
 @Repository
 public interface TicketRepository extends JpaRepository<Ticket, Long> {
 
-	// Cantidad de viajes que ha hecho un pasajero en un año o fecha específica
-	int countFlights(int idPassenger, Date dateDeparture, Date dateReturn);
+	@Query(value = "select count(subReserve.departureFlight) from ticket, "
+			+ "(select * from reserve inner join flight "
+			+ "on reserve.departureFlight=flight.idFlight "
+			+ "where flight.date between DATE_FORMAT(:departureDate,\"%Y-%m-%d\") "
+			+ "and DATE_FORMAT(:returnDate,\"%Y-%m-%d\")) as subReserve "
+			+ "where ticket.idReserve=subReserve.idReserve "
+			+ "and ticket.idPassenger=:idPassenger", nativeQuery = true)
+	int countFlightsdeparture(int idPassenger, Date departureDate, Date returnDate);
+	
+	@Query(value = "select count(subReserve.returnFlight) from ticket, "
+			+ "(select * from reserve inner join flight "
+			+ "on reserve.departureFlight=flight.idFlight "
+			+ "where flight.date between DATE_FORMAT(:departureDate,\"%Y-%m-%d\") "
+			+ "and DATE_FORMAT(:returnDate,\"%Y-%m-%d\")) as subReserve "
+			+ "where ticket.idReserve=subReserve.idReserve "
+			+ "and ticket.idPassenger=:idPassenger", nativeQuery = true)
+	int countFlightsReturn(int idPassenger, Date departureDate, Date returnDate);
 }

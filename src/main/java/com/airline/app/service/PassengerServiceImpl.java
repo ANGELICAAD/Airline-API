@@ -18,13 +18,13 @@ public class PassengerServiceImpl implements PassengerService {
 	}
 
 	@Override
-	public Passenger findpassenger(int idPassenger) {
+	public Passenger findPassenger(int idPassenger) {
 		return passengerRepository.findById((long) idPassenger).get();
 	}
 
 	@Override
 	public String validateFrequentFlyer(int idPassenger, int miles) {
-		Passenger passenger = findpassenger(idPassenger);
+		Passenger passenger = findPassenger(idPassenger);
 		String message = "";
 		int accumulateMiles = passenger.getNumberMiles() + miles;
 		

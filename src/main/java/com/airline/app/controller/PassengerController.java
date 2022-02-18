@@ -38,4 +38,15 @@ public class PassengerController {
 		
 		return ResponseEntity.ok(message);
 	}
+	
+	@GetMapping("/{idPassenger}")
+	public ResponseEntity<Passenger> findPassenger(@PathVariable int idPassenger) {
+		Passenger passenger = passengerService.findPassenger(idPassenger);
+		
+		if(passenger == null) {
+			return ResponseEntity.notFound().build();
+		}
+		
+		return ResponseEntity.ok(passenger);
+	}
 }
