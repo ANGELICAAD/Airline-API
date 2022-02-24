@@ -36,5 +36,10 @@ public class PassengerServiceImpl implements PassengerService {
 		}
 		
 		return message;
+	}
+
+	@Override
+	public Passenger findPassengerDocument(String document) {
+		return passengerRepository.findPassengerDocument(document);
 	}	
 }

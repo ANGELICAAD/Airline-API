@@ -27,8 +27,9 @@ public class FlightController {
 	public ResponseEntity<?> flightList(@RequestParam("flightDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date selectedDate, 
 										@PathVariable String originCity, @PathVariable String destinationCity, 
 										@PathVariable int numberPassanger) {
+		System.out.println("imprimir: " + selectedDate + " " + originCity + " " + destinationCity + " " + numberPassanger);
 		List<Object[]> flights = (List<Object[]>) flightService.flightList(selectedDate, originCity, destinationCity, numberPassanger);
-		
+		System.out.println("tamaño " + flights.size());
 		if(flights.isEmpty()) {
 			return ResponseEntity.notFound().build();
 		}

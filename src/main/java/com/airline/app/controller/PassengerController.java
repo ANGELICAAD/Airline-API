@@ -49,4 +49,15 @@ public class PassengerController {
 		
 		return ResponseEntity.ok(passenger);
 	}
+	
+	@GetMapping("/buscar/{document}")
+	public ResponseEntity<Passenger> findPassengerDocument(@PathVariable String document) {
+		Passenger passenger = passengerService.findPassengerDocument(document);
+		
+		if(passenger == null) {
+			return ResponseEntity.notFound().build();
+		}
+		
+		return ResponseEntity.ok(passenger);
+	}
 }

@@ -15,7 +15,7 @@ public class CityServiceImpl implements CityService {
 	public boolean visaRequired(String name) {
 		String visa = cityRepository.visaRequired(name);
 		
-		boolean requerid = (visa.equals("0")) ? false : true;
+		boolean requerid = (visa.equals("false")) ? false : true;
 		
 		return requerid;
 	}
