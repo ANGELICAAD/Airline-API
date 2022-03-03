@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.airline.app.entity.Flight;
 import com.airline.app.service.FlightService;
 
 @RestController
@@ -35,5 +36,16 @@ public class FlightController {
 		}
 		
 		return ResponseEntity.ok(flights);
+	}
+	
+	@GetMapping("/search/{idFlight}")
+	public ResponseEntity<?> findFlight(@PathVariable int idFlight) {
+		Flight flight = flightService.findFlight(idFlight);
+		
+		if(flight == null) {
+			return ResponseEntity.notFound().build();
+		}
+		
+		return ResponseEntity.ok(flight);
 	}
 }

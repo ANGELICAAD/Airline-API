@@ -38,6 +38,9 @@ public class Reserve implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "returnFlight", referencedColumnName = "idFlight")
 	private Flight returnFlight;
+	
+	@Column(name = "flightType")
+	private String flightType;
 
 	public Long getIdReserve() {
 		return idReserve;
@@ -69,5 +72,13 @@ public class Reserve implements Serializable {
 
 	public void setReturnFlight(Flight returnFlight) {
 		this.returnFlight = returnFlight;
+	}
+
+	public String getFlightType() {
+		return flightType;
+	}
+
+	public void setFlightType(String flightType) {
+		this.flightType = flightType;
 	}
 }

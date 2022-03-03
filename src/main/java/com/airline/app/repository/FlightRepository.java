@@ -13,7 +13,7 @@ import com.airline.app.entity.Flight;
 public interface FlightRepository extends JpaRepository<Flight, Long> {
 
 	// Listar vuelos de acuerdo a la ciudad de origen, ciudad destino, la fecha y la cantidad de pasajeros
-	@Query(value = "select hour, duration, routeType, cost from flight, "
+	@Query(value = "select hour, duration, routeType, cost, idFlight from flight, "
 				+ "(select route.idRoute from route inner join city as cOrigin "
 				+ "on route.originCity=cOrigin.idCity inner join city as cDestination "
 				+ "on route.destinationCity=cDestination.idCity "

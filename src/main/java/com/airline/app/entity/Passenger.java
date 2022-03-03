@@ -75,9 +75,9 @@ public class Passenger implements Serializable {
 		return document;
 	}
 
-//	public void setDocument(String document) {
-//		this.document = document;
-//	}
+	public void setDocument(String document) {
+		this.document = document;
+	}
 
 	public String getName() {
 		return name;

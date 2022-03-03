@@ -9,4 +9,6 @@ public interface ReserveService {
 	public Reserve saveReserve(Reserve reserve);
 	
 	public List<Object[]> listReservationsCreated();
+	
+	public Reserve findReserve(int idReserve);
 }

@@ -1,6 +1,7 @@
 package com.airline.app.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -27,10 +28,8 @@ public class TicketController {
 	public TicketService ticketService;
 	
 	@GetMapping("/")
-	public ResponseEntity<Integer> validateDiscounts(@RequestParam("idPassenger") int idPassenger, 
-			@RequestParam("departureDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date departureDate, 
-			@RequestParam("returnDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date returnDate) {
-		int totalDiscount = ticketService.validateDiscounts(idPassenger, departureDate, returnDate);
+	public ResponseEntity<Integer> validateDiscounts(@RequestParam("idPassenger") int idPassenger) {
+		int totalDiscount = ticketService.validateDiscounts(idPassenger);
 		
 		return ResponseEntity.ok(totalDiscount);
 	}
@@ -38,5 +37,19 @@ public class TicketController {
 	@PostMapping
 	public ResponseEntity<?> saveTicket(@RequestBody Ticket ticket) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(ticketService.saveTicket(ticket));
+	}
+	
+	@GetMapping("/lastReservation/{idPassenger}")
+	public ResponseEntity<?> lastReservation(@PathVariable int idPassenger) {
+		int idReserve = ticketService.lastReservation(idPassenger);
+
+		return ResponseEntity.ok(idReserve);
+	}
+	
+	@GetMapping("/penultimateReservation/{idPassenger}")
+	public ResponseEntity<?> penultimateReservation(@PathVariable int idPassenger) {
+		int idReserve = ticketService.penultimateReservation(idPassenger);
+
+		return ResponseEntity.ok(idReserve);
 	}
 }

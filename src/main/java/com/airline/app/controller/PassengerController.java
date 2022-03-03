@@ -1,5 +1,7 @@
 package com.airline.app.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,25 +24,30 @@ public class PassengerController {
 
 	@Autowired
 	public PassengerService passengerService;
-	
+
+	public PassengerController(PassengerService passengerService) {
+		super();
+		this.passengerService = passengerService;
+	}
+
 	@PostMapping
 	public ResponseEntity<?> savePassenger(@RequestBody Passenger passenger) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(passengerService.savePassenger(passenger));
 	}
 	
-	@GetMapping("/{idPassenger}&&{miles}")
-	public ResponseEntity<String> validateFrequentFlyer(@PathVariable int idPassenger, @PathVariable int miles) {
-		String message = passengerService.validateFrequentFlyer(idPassenger, miles);
+	@GetMapping("/validate/{idPassenger}&&{miles}")
+	public ResponseEntity<?> validateFrequentFlyer(@PathVariable String idPassenger, @PathVariable String miles) {
+		String message = passengerService.validateFrequentFlyer(Integer.parseInt(idPassenger), Integer.parseInt(miles));
 		
 		if(message.equals("")) {
 			return ResponseEntity.notFound().build();
 		}
 		
-		return ResponseEntity.ok(message);
+		return ResponseEntity.ok(Map.of("ms", message));
 	}
 	
 	@GetMapping("/{idPassenger}")
-	public ResponseEntity<Passenger> findPassenger(@PathVariable int idPassenger) {
+	public ResponseEntity<?> findPassenger(@PathVariable int idPassenger) {
 		Passenger passenger = passengerService.findPassenger(idPassenger);
 		
 		if(passenger == null) {
@@ -50,8 +57,8 @@ public class PassengerController {
 		return ResponseEntity.ok(passenger);
 	}
 	
-	@GetMapping("/buscar/{document}")
-	public ResponseEntity<Passenger> findPassengerDocument(@PathVariable String document) {
+	@GetMapping("/search/{document}")
+	public ResponseEntity<?> findPassengerDocument(@PathVariable String document) {
 		Passenger passenger = passengerService.findPassengerDocument(document);
 		
 		if(passenger == null) {

@@ -20,4 +20,10 @@ public interface RouteRepository extends JpaRepository<Route, Long> {
 			+ "on r.destinationCity = cDestination.idCity where cOrigin.name=:originCity", 
 			nativeQuery = true)
 	List<String> destinationCitiesList(String originCity);
+	
+	@Query(value = "select route.acumulateMiles from route inner join city as cOrigin "
+			+ "on cOrigin.idCity=route.originCity inner join city cDestination "
+			+ "on cDestination.idCity=route.destinationCity where cOrigin.name=:originCity "
+			+ "and cDestination.name=:destinationCity", nativeQuery = true)
+	int milesToAccumulate(String originCity, String destinationCity);
 }

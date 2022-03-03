@@ -44,4 +44,11 @@ public class RouteController {
 		
 		return ResponseEntity.ok(destinationCities);
 	}
+	
+	@GetMapping("/miles/{originCity}&&{destinationCity}")
+	public ResponseEntity<?> milesAccumulate(@PathVariable String originCity, @PathVariable String destinationCity) {
+		int numberMiles = routeService.milesToAccumulate(originCity, destinationCity);
+		
+		return ResponseEntity.ok(numberMiles);
+	}
 }
