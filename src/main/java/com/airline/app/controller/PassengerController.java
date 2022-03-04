@@ -19,7 +19,7 @@ import com.airline.app.service.PassengerService;
 
 @RestController
 @RequestMapping("/api/passenger")
-@CrossOrigin({"*"})
+@CrossOrigin(origins = "http://localhost:8080")
 public class PassengerController {
 
 	@Autowired
