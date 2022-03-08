@@ -11,7 +11,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 @SpringBootApplication
-@ComponentScan({"com.airline.app.controller"})
+//@ComponentScan({"com.airline.app.controller"})
 public class AirlineApiApplication {
 
 	public static void main(String[] args) {
