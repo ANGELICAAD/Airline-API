@@ -12,13 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.airline.app.service.CityService;
 
 @RestController
+//@RequestMapping("/api/city")
+@RequestMapping("api/city")
 @CrossOrigin({"*"})
 public class CityController {
 
 	@Autowired
 	public CityService cityService;
 	
-	@RequestMapping("/api/city")
 	@GetMapping(value = "/{name}")
 	public ResponseEntity<?> visaRequired(@PathVariable String name, ModelMap Model) {
 		return ResponseEntity.ok(cityService.visaRequired(name));
