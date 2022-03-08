@@ -12,8 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.airline.app.service.CityService;
 
 @RestController
-//@RequestMapping("/api/city")
-@RequestMapping("city")
+@RequestMapping("/api/city")
 @CrossOrigin({"*"})
 public class CityController {
 
