@@ -13,14 +13,14 @@ import com.airline.app.service.CityService;
 
 @RestController
 //@RequestMapping("/api/city")
-@RequestMapping("api/city")
+@RequestMapping("city")
 @CrossOrigin({"*"})
 public class CityController {
 
 	@Autowired
 	public CityService cityService;
 	
-	@GetMapping(value = "/{name}")
+	@GetMapping("/{name}")
 	public ResponseEntity<?> visaRequired(@PathVariable String name, ModelMap Model) {
 		return ResponseEntity.ok(cityService.visaRequired(name));
 	}
