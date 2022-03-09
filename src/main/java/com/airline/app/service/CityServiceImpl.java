@@ -16,8 +16,9 @@ public class CityServiceImpl implements CityService {
 	 */
 	@Override
 	public boolean visaRequired(String name) {
+		System.out.println("name " + name);
 		String visa = cityRepository.visaRequired(name);
-		
+		System.out.println("visa " + visa);
 		boolean requerid = (visa.equals("false")) ? false : true;
 		
 		return requerid;
