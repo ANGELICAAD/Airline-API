@@ -1,0 +1,453 @@
+{
+	"info": {
+		"_postman_id": "cc3b27ec-2c2e-4625-ad61-e2affa12aa03",
+		"name": "Aerolinea",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Ciudades Origen",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/route/originCities",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"route",
+						"originCities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ciudades Destino",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/route/destinationCities/Bogota",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"route",
+						"destinationCities",
+						"Bogota"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lista Vuelos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/flight/Bogota&&Cancun&&5&&selectedDate?flightDate=2021-11-01",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"flight",
+						"Bogota&&Cancun&&5&&selectedDate"
+					],
+					"query": [
+						{
+							"key": "flightDate",
+							"value": "2021-11-01"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Pasajero",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idPassenger\":\"-1\",\r\n    \"document\":\"1095251264\",\r\n    \"name\":\"Juan\",\r\n    \"lastName\":\"Marin\",\r\n    \"phone\":\"3105895751\",\r\n    \"email\":\"jmarin@gmail.com\",\r\n    \"age\":20,\r\n    \"type\":\"adulto\",\r\n    \"visaExpirationDate\":\"\",\r\n    \"numberTrips\":\"20\",\r\n    \"numberMiles\":\"100\",\r\n    \"frequentFlyer\":true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/passenger",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"passenger"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ciudad Destino Requiere Visa",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/city/Bogota",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"city",
+						"Bogota"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validar Viajero Frecuente",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/passenger/validate/3&&20",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"passenger",
+						"validate",
+						"3&&20"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Reserva",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idReserve\":\"-1\",\r\n    \"state\":\"pendiente\",\r\n    \"departureFlight\":{\r\n        \"idFlight\":\"2\",\r\n        \"chairsAvailable\":\"20\",\r\n        \"cost\":\"150000\",\r\n        \"date\":\"2021-11-10\",\r\n        \"duration\":\"45m\",\r\n        \"hour\":\"11:30\",\r\n        \"number\":\"5478\",\r\n        \"routeType\":\"directo\",\r\n        \"type\":\"nacional\",\r\n        \"idRoute\":{\r\n            \"idRoute\":\"2\",\r\n            \"acumulateMiles\":\"15\",\r\n            \"destinationCity\":{\r\n                \"idCity\":\"2\",\r\n                \"name\":\"Bogota\",\r\n                \"visa\":false\r\n            },\r\n            \"originCity\":{\r\n                \"idCity\":\"6\",\r\n                \"name\":\"Pereira\",\r\n                \"visa\":false\r\n            }\r\n        }\r\n    },\r\n    \"returnFlight\":null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/reserve",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"reserve"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Tiquete",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idTicket\":\"-1\",\r\n    \"totalPayment\":\"150000\",\r\n    \"idPassenger\":{\r\n        \"idPassenger\":\"1\",\r\n        \"document\":\"109748822\",\r\n        \"name\":\"Camila\",\r\n        \"lastName\":\"Rodrigez\",\r\n        \"phone\":\"3115836993\",\r\n        \"email\":\"crodigez@gmail.com\",\r\n        \"age\":\"24\",\r\n        \"type\":\"adulto\",\r\n        \"visaExpirationDate\":\"2023-03-05\",\r\n        \"numberTrips\":\"5\",\r\n        \"numberMiles\":\"500\",\r\n        \"frequentFlyer\":false\r\n    },\r\n    \"idReserve\":{\r\n        \"idReserve\": 4,\r\n        \"state\": \"pendiente\",\r\n        \"departureFlight\": {\r\n            \"idFlight\": 2,\r\n            \"number\": \"5478\",\r\n            \"type\": \"nacional\",\r\n            \"date\": \"2021-11-10T00:00:00.000+00:00\",\r\n            \"hour\": \"11:30\",\r\n            \"duration\": \"45m\",\r\n            \"routeType\": \"directo\",\r\n            \"chairsAvailable\": 20,\r\n            \"cost\": 150000.0,\r\n            \"idRoute\": {\r\n                \"idRoute\": 2,\r\n                \"acumulateMiles\": 15\r\n            }\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/ticket",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"ticket"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validar Descuento Tiquete",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/ticket/?idPassenger=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"ticket",
+						""
+					],
+					"query": [
+						{
+							"key": "idPassenger",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar Pasajero",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/passenger/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"passenger",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lista Reservas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/reserve/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"reserve",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar Pasajero por Documento",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/passenger/search/109748822",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"passenger",
+						"search",
+						"109748822"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cantidad Millas a Acumular",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/route/miles/Bogota&&Cartagena",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"route",
+						"miles",
+						"Bogota&&Cartagena"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar Vuelo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/flight/search/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"flight",
+						"search",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar Última Reserva",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/ticket/lastReservation/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"ticket",
+						"lastReservation",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar Penúltima Reserva",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/ticket/penultimateReservation/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"ticket",
+						"penultimateReservation",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar Reserva por Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/reserve/search/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"reserve",
+						"search",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Estado Reserva",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idReserve\": 4,\r\n    \"state\": \"confirmado\",\r\n    \"departureFlight\": {\r\n        \"idFlight\": 2,\r\n        \"number\": \"5478\",\r\n        \"type\": \"nacional\",\r\n        \"date\": \"2021-11-10T00:00:00.000+00:00\",\r\n        \"hour\": \"11:30\",\r\n        \"duration\": \"45m\",\r\n        \"routeType\": \"directo\",\r\n        \"chairsAvailable\": 20,\r\n        \"cost\": 150000.0,\r\n        \"idRoute\": {\r\n            \"idRoute\": 2,\r\n            \"acumulateMiles\": 15\r\n        }\r\n    },\r\n    \"returnFlight\": {\r\n        \"idFlight\": 3,\r\n        \"number\": \"4277\",\r\n        \"type\": \"nacional\",\r\n        \"date\": \"2021-11-21T00:00:00.000+00:00\",\r\n        \"hour\": \"14:00\",\r\n        \"duration\": \"1h 30m\",\r\n        \"routeType\": \"directo\",\r\n        \"chairsAvailable\": 43,\r\n        \"cost\": 260000.0,\r\n        \"idRoute\": {\r\n            \"idRoute\": 3,\r\n            \"acumulateMiles\": 20\r\n        }\r\n    },\r\n    \"flightType\": \"RT\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/reserve/update/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"reserve",
+						"update",
+						"4"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
