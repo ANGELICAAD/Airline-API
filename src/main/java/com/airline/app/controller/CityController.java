@@ -23,4 +23,9 @@ public class CityController {
 	public ResponseEntity<?> visaRequired(@PathVariable String name, ModelMap Model) {
 		return ResponseEntity.ok(cityService.visaRequired(name));
 	}
+	
+	@GetMapping("/")
+	public ResponseEntity<?> validacion() {
+		return ResponseEntity.ok("ok");
+	}
 }
