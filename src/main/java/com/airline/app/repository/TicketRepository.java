@@ -30,9 +30,9 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
 			+ "and ticket.idPassenger=:idPassenger", nativeQuery = true)
 	int countFlightsReturn(int idPassenger, Date departureDate, Date returnDate);
 	
-	@Query(value = "select max(idReserve) from ticket where idPassenger=:idPassenger", nativeQuery = true)
-	int lastReservation(int idPassenger);
-	
-	@Query(value = "select max(idReserve)-1 from ticket where idPassenger=:idPassenger", nativeQuery = true)
-	int penultimateReservation(int idPassenger);
+//	@Query(value = "select max(idReserve) from ticket where idPassenger=:idPassenger", nativeQuery = true)
+//	int lastReservation(int idPassenger);
+//	
+//	@Query(value = "select max(idReserve)-1 from ticket where idPassenger=:idPassenger", nativeQuery = true)
+//	int penultimateReservation(int idPassenger);
 }

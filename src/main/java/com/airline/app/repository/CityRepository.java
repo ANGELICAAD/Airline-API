@@ -12,5 +12,5 @@ public interface CityRepository extends JpaRepository<City, Long> {
 	@Query(value = "select visa from city where city.name=:name", nativeQuery = true)
 	String visaRequired(String name);
 	
-	City findByName(String name);
+	// City findByName(String name);
 }
