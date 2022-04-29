@@ -35,17 +35,6 @@ public class PassengerController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(passengerService.savePassenger(passenger));
 	}
 	
-	@GetMapping("/validate/{idPassenger}&&{miles}")
-	public ResponseEntity<?> validateFrequentFlyer(@PathVariable String idPassenger, @PathVariable String miles) {
-		String message = passengerService.validateFrequentFlyer(Integer.parseInt(idPassenger), Integer.parseInt(miles));
-		
-		if(message.equals("")) {
-			return ResponseEntity.notFound().build();
-		}
-		
-		return ResponseEntity.ok(Map.of("ms", message));
-	}
-	
 	@GetMapping("/{idPassenger}")
 	public ResponseEntity<?> findPassenger(@PathVariable int idPassenger) {
 		Passenger passenger = passengerService.findPassenger(idPassenger);
@@ -66,5 +55,16 @@ public class PassengerController {
 		}
 		
 		return ResponseEntity.ok(passenger);
+	}
+	
+	@GetMapping("/validate/{idPassenger}&&{miles}")
+	public ResponseEntity<?> validateFrequentFlyer(@PathVariable String idPassenger, @PathVariable String miles) {
+		int[] milesAccumulate = passengerService.validateFrequentFlyer(Integer.parseInt(idPassenger), Integer.parseInt(miles));
+		
+		if(milesAccumulate.length == 0) {
+			return ResponseEntity.notFound().build();
+		}
+		
+		return ResponseEntity.ok(milesAccumulate);
 	}
 }

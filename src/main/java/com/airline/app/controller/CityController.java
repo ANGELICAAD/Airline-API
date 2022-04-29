@@ -24,8 +24,8 @@ public class CityController {
 		return ResponseEntity.ok(cityService.visaRequired(name));
 	}
 	
-	@GetMapping("/")
-	public ResponseEntity<?> validacion() {
-		return ResponseEntity.ok("ok");
-	}
+//	@GetMapping("/")
+//	public ResponseEntity<?> validacion() {
+//		return ResponseEntity.ok("ok");
+//	}
 }
