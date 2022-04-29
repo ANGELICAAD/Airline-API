@@ -51,12 +51,15 @@ class PassengerServiceTest {
 	}
 	
 	/**
-	 * Prueba el mensaje de respuesta para informas las millas acumuladas y las que se van a acumular 
+	 * Prueba las millas que tiene un pasajero y las millas que va a acumular con el viaje
 	 */
 	@Test
-	void messageStructure() {
-		message = passengerServiceImpl.messageStructure(passenger, 20);
-		String expect = "Actualmente usted tiene 100 millas. Y se van a acumular 20 millas con el viaje.";
-		assertEquals(expect, message);
+	void milesToAccumulate() {
+		int[] miles = new int[2];
+		miles[0] = passenger.getNumberMiles();
+		miles[1] = 20;
+		
+		int[] expect = {100, 20};
+		assertArrayEquals(expect, miles);
 	}
 }
