@@ -37,5 +37,4 @@ public class RouteServiceImpl implements RouteService {
 	public int milesToAccumulate(String originCity, String destinationCity) {
 		return routeRepository.milesToAccumulate(originCity, destinationCity);
 	}
-
 }

@@ -10,5 +10,5 @@ public interface PassengerService {
 	
 	public Passenger findPassengerDocument(String document);
 	
-	public String validateFrequentFlyer(int idPassenger, int miles);
+	public int[] validateFrequentFlyer(int idPassenger, int miles);
 }

@@ -1,8 +1,6 @@
 package com.airline.app.service;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 import org.springframework.stereotype.Service;
 
@@ -122,14 +120,13 @@ public class TicketServiceImpl implements TicketService {
 		return ticketRepository.save(ticket);
 	}
 
-	@Override
-	public int lastReservation(int idPassenger) {
-		return ticketRepository.lastReservation(idPassenger);
-	}
-
-	@Override
-	public int penultimateReservation(int idPassenger) {
-		return ticketRepository.penultimateReservation(idPassenger);
-	}
-
+//	@Override
+//	public int lastReservation(int idPassenger) {
+//		return ticketRepository.lastReservation(idPassenger);
+//	}
+//
+//	@Override
+//	public int penultimateReservation(int idPassenger) {
+//		return ticketRepository.penultimateReservation(idPassenger);
+//	}
 }

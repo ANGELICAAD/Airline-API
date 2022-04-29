@@ -11,7 +11,7 @@ public interface TicketService {
 	
 	public Ticket saveTicket(Ticket ticket);
 	
-	public int lastReservation(int idPassenger);
+//	public int lastReservation(int idPassenger);
 	
-	public int penultimateReservation(int idPassenger);
+//	public int penultimateReservation(int idPassenger);
 }

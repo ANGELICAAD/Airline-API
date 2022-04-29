@@ -32,32 +32,33 @@ public class PassengerServiceImpl implements PassengerService {
 	 * Método para verificar si un pasajero es frecuente
 	 */
 	@Override
-	public String validateFrequentFlyer(int idPassenger, int miles) {
-		Passenger passenger = findPassenger(idPassenger);
+	public int[] validateFrequentFlyer(int idPassenger, int miles) {
+		Passenger passenger = passengerRepository.findById((long) idPassenger).get();
 		int accumulateMiles = passenger.getNumberMiles() + miles;
-		String message = messageStructure(passenger, accumulateMiles);		
+		int[] milesAccumulate = milesToAccumulate(passenger, accumulateMiles);		
 		
-		return message;
+		return milesAccumulate;
 	}
 	
 	/**
-	 * Método que estructura el mensaje de las millas a acumular de un pasajero frecuente
+	 * Método que retorna las millas que el pasajero tiene acumuladas y las que va a acumular
+	 * con el viaje
 	 * 
 	 * @param passenger Información del pasajero a validar
 	 * @param accumulateMiles Millas que se van a acumular
-	 * @return Mensaje informativo
+	 * @return Arreglo con las millas que tiene acumuladas y las que va a acumular
 	 */
-	public String messageStructure(Passenger passenger, int accumulateMiles) {
-		String message = "";
+	public int[] milesToAccumulate(Passenger passenger, int accumulateMiles) {
+		int[] miles = new int[2];
 		
 		if(passenger != null) {
 			if(passenger.isFrequentFlyer() == true) {
-				message += "Actualmente usted tiene " + passenger.getNumberMiles() +  " millas.";
-				message += " Y se van a acumular " + accumulateMiles + " millas con el viaje.";
+				miles[0] = passenger.getNumberMiles();
+				miles[1] = accumulateMiles;
 			}			
 		}
 		
-		return message;
+		return miles;
 	}
 
 	/**
