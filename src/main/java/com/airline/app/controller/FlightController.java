@@ -1,9 +1,11 @@
 package com.airline.app.controller;
 
 import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.airline.app.dto.FlightDTO;
@@ -26,10 +29,13 @@ public class FlightController {
 	@Autowired
 	public FlightService flightService;
 	
-	@PostMapping("/")
-	public ResponseEntity<?> flightList(@RequestBody FlightList info) throws ParseException {
-		List<FlightDTO> flights = flightService.flightList(info.getSelectedDate(), info.getOriginCity(), info.getDestinationCity(), info.getNumberPassanger());
-
+	@GetMapping("/{originCity}&&{destinationCity}&&{numberPassanger}&&selectedDate")
+	public ResponseEntity<?> flightList(@RequestParam("flightDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date selectedDate, 
+										@PathVariable String originCity, @PathVariable String destinationCity, 
+										@PathVariable int numberPassanger) {
+		System.out.println("imprimir: " + selectedDate + " " + originCity + " " + destinationCity + " " + numberPassanger);
+		List<FlightDTO> flights = (List<FlightDTO>) flightService.flightList(selectedDate, originCity, destinationCity, numberPassanger);
+		System.out.println("tamaño " + flights.size());
 		if(flights.isEmpty()) {
 			return ResponseEntity.notFound().build();
 		}
