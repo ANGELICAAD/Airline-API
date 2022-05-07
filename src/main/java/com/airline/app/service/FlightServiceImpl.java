@@ -23,6 +23,7 @@ public class FlightServiceImpl implements FlightService {
 	@Override
 	public List<FlightDTO> flightList(Date selectedDate, String originCity, String destinationCity, int numberPassanger) {
 		List<Object[]> flights = flightRepository.flightList(selectedDate, originCity, destinationCity, numberPassanger);
+		System.out.println("tamaño 2: " + flights.size());
 		List<FlightDTO> flightsDTO = new ArrayList<>();
 		
 		for (Object[] iterator : flights) {
